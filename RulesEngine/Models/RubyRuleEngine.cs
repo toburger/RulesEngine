@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace RulesEngine.Models
 {
     [Export(typeof(IRuleEngine))]
-    [RuleEngine("Ruby Rule")]
+    [RuleEngine("Ruby Rule Engine")]
     public class RubyRuleEngine : IRuleEngine
     {
         public RubyRuleEngine()
         {
-            CustomRuleCode = @"#Ruby Code...
+            CustomRuleCode = @"# Ruby Code...
 
 if Text == NIL or Text == """"
     return false

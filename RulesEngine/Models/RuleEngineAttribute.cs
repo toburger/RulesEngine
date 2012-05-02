@@ -17,5 +17,7 @@ namespace RulesEngine.Models
         public string RuleName { get; set; }
 
         public bool IsDefault { get; set; }
+
+        public bool NoCustomRuleCode { get; set; }
     }
 }

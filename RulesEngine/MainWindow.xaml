@@ -6,6 +6,7 @@
         Height="350"
         Width="525">
     <Window.Resources>
+        <Converters:NegateBooleanConverter x:Key="NegateBooleanConverter" />
         <Converters:BooleanToColorConverter x:Key="BooleanToColorConverter" />
         <Converters:BooleanToSymbolConverter x:Key="BooleanToSymbolConverter" />
     </Window.Resources>
@@ -51,7 +52,8 @@
                          AcceptsReturn="True"
                          AcceptsTab="True"
                          VerticalScrollBarVisibility="Auto"
-                         Margin="0,5,0,0" />
+                         Margin="0,5,0,0"
+                         IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}" />
             </Grid>
         </GroupBox>
     </Grid>

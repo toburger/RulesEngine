@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RulesEngine.Models
 {
     [Export(typeof(IRuleEngine))]
-    [RuleEngine("Python Rule")]
+    [RuleEngine("Python Rule Engine")]
     public class PythonRuleEngine:IRuleEngine
     {
         public PythonRuleEngine()

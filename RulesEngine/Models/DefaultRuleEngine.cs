@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RulesEngine.Models
 {
     [Export(typeof(IRuleEngine))]
-    [RuleEngine("Default Rule", IsDefault = true)]
+    [RuleEngine("Default Rule Engine", IsDefault = true, NoCustomRuleCode = true)]
     public class DefaultRuleEngine : IRuleEngine
     {
         public bool Validate(string text)

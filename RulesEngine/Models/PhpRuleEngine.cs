@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 namespace RulesEngine.Models
 {
     [Export(typeof(IRuleEngine))]
-    [RuleEngine("PHP Rule")]
+    [RuleEngine("PHP Rule Engine")]
     public class PhpRuleEngine : IRuleEngine
     {
         public PhpRuleEngine()
         {
-            CustomRuleCode = @"if (!$value)
+            CustomRuleCode = @"# PHP Code:
+
+if (!$value)
     return false;
 return true;";
         }

@@ -105,6 +105,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BooleanToColorConverter.cs" />
     <Compile Include="Converters\BooleanToSymbolConverter.cs" />
+    <Compile Include="Converters\NegateBooleanConverter.cs" />
     <Compile Include="Models\DefaultRuleEngine.cs" />
     <Compile Include="Models\IRuleEngine.cs" />
     <Compile Include="Models\IRuleEngineMetadata.cs" />
