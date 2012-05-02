@@ -15,9 +15,8 @@ namespace RulesEngine.Converters
         {
             var val = value as bool?;
             if (val == null)
-                return null;
-
-            if (val == true)
+                return Colors.Black;
+            else if (val == true)
                 return Colors.Green;
             else
                 return Colors.Red;

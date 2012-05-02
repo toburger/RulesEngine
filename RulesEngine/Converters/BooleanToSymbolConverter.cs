@@ -14,9 +14,8 @@ namespace RulesEngine.Converters
         {
             var val = value as bool?;
             if (val == null)
-                return null;
-
-            if (val == true)
+                return "K";
+            else if (val == true)
                 return "J";
             else
                 return "L";

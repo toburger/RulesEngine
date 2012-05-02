@@ -42,7 +42,9 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <ComboBox ItemsSource="{Binding RuleEngines}"
                           SelectedItem="{Binding SelectedRuleEngine}"
@@ -54,6 +56,17 @@
                          VerticalScrollBarVisibility="Auto"
                          Margin="0,5,0,0"
                          IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}" />
+                <GridSplitter Grid.Row="2"
+                              Height="5"
+                              HorizontalAlignment="Stretch"
+                              Background="Transparent"
+                              ResizeDirection="Rows" />
+                <TextBox Grid.Row="3"
+                         IsReadOnly="True"
+                         Foreground="Red"
+                         VerticalScrollBarVisibility="Auto"
+                         IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}"
+                         Text="{Binding ValidationErrors}" />
             </Grid>
         </GroupBox>
     </Grid>

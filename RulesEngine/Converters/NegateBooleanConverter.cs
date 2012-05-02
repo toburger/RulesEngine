@@ -14,7 +14,6 @@ namespace RulesEngine.Converters
             var val = value as bool?;
             if (val == null)
                 return null;
-
             return val != true;
         }
 

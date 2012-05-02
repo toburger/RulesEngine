@@ -18,6 +18,7 @@ namespace RulesEngine.ViewModels
         private IRuleEngine _selectedRuleEngine;
         private string _textToValidate;
         private bool? _isValid;
+        private string _validationErrors;
 
         [ImportingConstructor]
         public RuleEngineViewModel([ImportMany]IEnumerable<Lazy<IRuleEngine, IRuleEngineMetadata>> rulesEngines)
@@ -40,12 +41,18 @@ namespace RulesEngine.ViewModels
 
         public Lazy<IRuleEngine, IRuleEngineMetadata> SelectedRuleEngine
         {
-            get { return _ruleEngines.FirstOrDefault(re => re.Value == _selectedRuleEngine); }
+            get
+            {
+                return _ruleEngines
+                    .FirstOrDefault(re => re.Value == _selectedRuleEngine);
+            }
             set
             {
                 _selectedRuleEngine = value.Value;
                 RaisePropertyChanged("SelectedRuleEngine");
                 RaisePropertyChanged("CustomRuleCode");
+
+                ResetForm();
             }
         }
 
@@ -77,7 +84,17 @@ namespace RulesEngine.ViewModels
                 _selectedRuleEngine.CustomRuleCode = value;
                 RaisePropertyChanged("CustomRuleCode");
 
-                IsValid = null;
+                ResetForm();
+            }
+        }
+
+        public string ValidationErrors
+        {
+            get { return _validationErrors; }
+            set
+            {
+                _validationErrors = value;
+                RaisePropertyChanged("ValidationErrors");
             }
         }
 
@@ -92,12 +109,14 @@ namespace RulesEngine.ViewModels
             try
             {
                 IsValid = _selectedRuleEngine.Validate(TextToValidate);
+                ValidationErrors = null;
             }
             catch (Exception ex)
             {
                 IsValid = null;
                 // TODO: loosely couple
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                ValidationErrors = ex.Message;
             }
         }
 
@@ -106,6 +125,12 @@ namespace RulesEngine.ViewModels
             var pc = PropertyChanged;
             if (pc != null)
                 pc(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ResetForm()
+        {
+            IsValid = null;
+            ValidationErrors = null;
         }
     }
 }
