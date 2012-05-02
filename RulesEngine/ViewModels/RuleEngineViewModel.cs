@@ -21,10 +21,14 @@ namespace RulesEngine.ViewModels
         private string _validationErrors;
 
         [ImportingConstructor]
-        public RuleEngineViewModel([ImportMany]IEnumerable<Lazy<IRuleEngine, IRuleEngineMetadata>> rulesEngines)
+        public RuleEngineViewModel([ImportMany]IEnumerable<Lazy<IRuleEngine, IRuleEngineMetadata>> ruleEngines)
         {
-            _ruleEngines = rulesEngines.OrderBy(re => re.Metadata.RuleName);
-            _selectedRuleEngine = _ruleEngines.Where(re => re.Metadata.IsDefault).Select(re => re.Value).FirstOrDefault();
+            _ruleEngines = ruleEngines
+                .OrderBy(re => re.Metadata.RuleName);
+            _selectedRuleEngine = _ruleEngines
+                .Where(re => re.Metadata.IsDefault)
+                .Select(re => re.Value)
+                .FirstOrDefault();
 
             RegisterCommands();
         }
@@ -78,7 +82,13 @@ namespace RulesEngine.ViewModels
 
         public string CustomRuleCode
         {
-            get { return _selectedRuleEngine == null ? null : _selectedRuleEngine.CustomRuleCode; }
+            get
+            {
+                return
+                    _selectedRuleEngine == null ?
+                    null :
+                    _selectedRuleEngine.CustomRuleCode;
+            }
             set
             {
                 _selectedRuleEngine.CustomRuleCode = value;

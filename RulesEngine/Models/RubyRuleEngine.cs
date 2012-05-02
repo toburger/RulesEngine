@@ -4,6 +4,8 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IronRuby;
+using Microsoft.Scripting.Hosting;
 
 namespace RulesEngine.Models
 {
@@ -11,8 +13,12 @@ namespace RulesEngine.Models
     [RuleEngine("Ruby Rule Engine")]
     public class RubyRuleEngine : IRuleEngine
     {
+        private readonly ScriptEngine _engine;
+
         public RubyRuleEngine()
         {
+            _engine = Ruby.CreateEngine();
+
             CustomRuleCode = @"# Ruby Code...
 
 if Text == NIL or Text == """"
@@ -25,9 +31,9 @@ end
 
         public bool Validate(string text)
         {
-            var engine = IronRuby.Ruby.CreateEngine();
-            engine.Runtime.Globals.SetVariable("Text", text);            
-            return engine.Execute<bool>(CustomRuleCode);
+            var scope = _engine.CreateScope();
+            scope.SetVariable("Text", text);
+            return _engine.Execute<bool>(CustomRuleCode, scope);
         }
 
         public string CustomRuleCode

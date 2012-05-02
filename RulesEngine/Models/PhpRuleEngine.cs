@@ -13,8 +13,12 @@ namespace RulesEngine.Models
     [RuleEngine("PHP Rule Engine")]
     public class PhpRuleEngine : IRuleEngine
     {
+        private readonly ScriptContext _context;
+
         public PhpRuleEngine()
         {
+            _context = ScriptContext.CurrentContext;
+
             CustomRuleCode = @"# PHP Code:
 
 if (!$text)
@@ -25,12 +29,11 @@ return true;";
         public bool Validate(string text)
         {
             var localVars = new Dictionary<string, object> { { "text", text } };
-            var context = PHP.Core.ScriptContext.CurrentContext;
             return System.Convert.ToBoolean(
                 DynamicCode.Eval(
                     CustomRuleCode,
                     false,
-                    context,
+                    _context,
                     localVars,
                     null,
                     null,

@@ -4,6 +4,8 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
 namespace RulesEngine.Models
 {
@@ -11,8 +13,12 @@ namespace RulesEngine.Models
     [RuleEngine("Python Rule Engine")]
     public class PythonRuleEngine:IRuleEngine
     {
+        private readonly ScriptEngine _engine;
+
         public PythonRuleEngine()
         {
+            _engine = Python.CreateEngine();
+
             CustomRuleCode = @"# Python Code
 
 def validate(text):
@@ -26,11 +32,9 @@ validate(Text)";
 
         public bool Validate(string text)
         {
-            var engine = IronPython.Hosting.Python.CreateEngine();
-            //engine.Runtime.Globals.SetVariable("Text", text);
-            var scope = engine.CreateScope();
+            var scope = _engine.CreateScope();
             scope.SetVariable("Text", text);
-            return engine.Execute<bool>(CustomRuleCode, scope);
+            return _engine.Execute<bool>(CustomRuleCode, scope);
         }
 
         public string CustomRuleCode

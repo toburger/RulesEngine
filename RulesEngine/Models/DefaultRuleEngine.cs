@@ -11,6 +11,13 @@ namespace RulesEngine.Models
     [RuleEngine("Default Rule Engine", IsDefault = true, NoCustomRuleCode = true)]
     public class DefaultRuleEngine : IRuleEngine
     {
+        public DefaultRuleEngine()
+        {
+            CustomRuleCode = @"if (string.IsNullOrEmpty(text))
+    return false;
+return true;";
+        }
+
         public bool Validate(string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -20,8 +27,8 @@ namespace RulesEngine.Models
 
         public string CustomRuleCode
         {
-            get { return null; }
-            set { throw new Exception("Cannot set Custom Rule Code."); }
+            get;
+            set;
         }
     }
 }
