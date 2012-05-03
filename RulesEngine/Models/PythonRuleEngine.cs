@@ -17,6 +17,8 @@ namespace RulesEngine.Models
 
         public PythonRuleEngine()
         {
+            System.Diagnostics.Debug.WriteLine("Python Rule Engine loaded...");
+
             _engine = Python.CreateEngine();
 
             CustomRuleCode = @"# Python Code

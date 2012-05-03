@@ -17,16 +17,17 @@ namespace RulesEngine.Models
 
         public RubyRuleEngine()
         {
+            System.Diagnostics.Debug.WriteLine("Ruby Rule Engine loaded...");
+
             _engine = Ruby.CreateEngine();
 
-            CustomRuleCode = @"# Ruby Code...
+            CustomRuleCode = @"# Ruby Code
 
-if Text == NIL or Text == """"
+if text.nil? or text.empty?
     return false
 else
     return true
-end
-";
+end";
         }
 
         public bool Validate(string text)

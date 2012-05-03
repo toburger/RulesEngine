@@ -13,6 +13,8 @@ namespace RulesEngine.Models
     {
         public DefaultRuleEngine()
         {
+            System.Diagnostics.Debug.WriteLine("Default Rule Engine loaded...");
+
             CustomRuleCode = @"if (string.IsNullOrEmpty(text))
     return false;
 return true;";
