@@ -17,11 +17,18 @@ namespace RulesEngine.Models
 
         public PhpRuleEngine()
         {
+            System.Diagnostics.Debug.WriteLine("PHP Rule Engine loaded...");
+
             _context = ScriptContext.CurrentContext;
 
-            CustomRuleCode = @"# PHP Code:
+            var assemblyLoader = _context.ApplicationContext.AssemblyLoader;
+            assemblyLoader.Load(typeof(string).Assembly, null);                 // mscorlib.dll
+            assemblyLoader.Load(typeof(Uri).Assembly, null);                    // System.dll
+            assemblyLoader.Load(typeof(PHP.Library.PhpStrings).Assembly, null); // PhpNetClassLibrary.dll
 
-if (!$text)
+            CustomRuleCode = @"# PHP Code
+
+if (strlen($text) == 0)
     return false;
 return true;";
         }
