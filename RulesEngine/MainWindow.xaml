@@ -3,7 +3,7 @@
         xmlns:Converters="clr-namespace:RulesEngine.Converters"
         x:Class="RulesEngine.MainWindow"
         Title="MainWindow"
-        Height="350"
+        Height="550"
         Width="525">
     <Window.Resources>
         <Converters:NegateBooleanConverter x:Key="NegateBooleanConverter" />
@@ -50,12 +50,13 @@
                           SelectedItem="{Binding SelectedRuleEngine}"
                           DisplayMemberPath="Metadata.RuleName" />
                 <TextBox Grid.Row="1"
-                         Text="{Binding CustomRuleCode}"
+                         Text="{Binding CustomRuleCode, UpdateSourceTrigger=PropertyChanged}"
                          AcceptsReturn="True"
                          AcceptsTab="True"
                          VerticalScrollBarVisibility="Auto"
                          Margin="0,5,0,0"
-                         IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}" />
+                         IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}"
+                         HorizontalScrollBarVisibility="Auto" />
                 <GridSplitter Grid.Row="2"
                               Height="5"
                               HorizontalAlignment="Stretch"
@@ -66,7 +67,8 @@
                          Foreground="Red"
                          VerticalScrollBarVisibility="Auto"
                          IsEnabled="{Binding SelectedRuleEngine.Metadata.NoCustomRuleCode, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay}"
-                         Text="{Binding ValidationErrors}" />
+                         Text="{Binding ValidationErrors}"
+                         HorizontalScrollBarVisibility="Auto" />
             </Grid>
         </GroupBox>
     </Grid>

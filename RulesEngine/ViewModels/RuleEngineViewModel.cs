@@ -35,7 +35,9 @@ namespace RulesEngine.ViewModels
 
         private void RegisterCommands()
         {
-            ValidateCommand = new RelayCommand(ValidateAction);
+            ValidateCommand = new RelayCommand(
+                ValidateAction,
+                CanValidateAction);
         }
 
         public IEnumerable<Lazy<IRuleEngine, IRuleEngineMetadata>> RuleEngines
@@ -47,16 +49,32 @@ namespace RulesEngine.ViewModels
         {
             get
             {
+                if (_selectedRuleEngine == null)
+                    return null;
                 return _ruleEngines
                     .FirstOrDefault(re => re.Value == _selectedRuleEngine);
             }
             set
             {
-                _selectedRuleEngine = value.Value;
+                ResetForm();
+
+                try
+                {
+                    _selectedRuleEngine = value.Value;
+                }
+                catch (CompositionException ex)
+                {
+                    _selectedRuleEngine = null;
+
+                    ValidationErrors = string.Format(
+                        "Error initializing: {0}\n{2}\n\n{1}",
+                        value.Metadata.RuleName,
+                        string.Join("\n", ex.Errors.Select(e => e.Exception.Message)),
+                        new string('-', 50));
+                }
+
                 RaisePropertyChanged("SelectedRuleEngine");
                 RaisePropertyChanged("CustomRuleCode");
-
-                ResetForm();
             }
         }
 
@@ -128,6 +146,11 @@ namespace RulesEngine.ViewModels
                 //MessageBox.Show(ex.Message);
                 ValidationErrors = ex.Message;
             }
+        }
+
+        private bool CanValidateAction()
+        {
+            return ValidationErrors == null;
         }
 
         private void RaisePropertyChanged(string propertyName)

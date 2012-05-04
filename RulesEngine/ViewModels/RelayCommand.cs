@@ -10,10 +10,12 @@ namespace RulesEngine.ViewModels
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;
+        private readonly Func<bool> _canExecute;
 
-        public RelayCommand(Action execute)
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
             _execute = execute;
+            _canExecute = canExecute;
         }
 
         public event EventHandler CanExecuteChanged
@@ -24,12 +26,15 @@ namespace RulesEngine.ViewModels
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (_canExecute == null)
+                return true;
+            return _canExecute();
         }
 
         public void Execute(object parameter)
         {
-            _execute();
+            if (CanExecute(null))
+                _execute();
         }
     }
 }

@@ -13,5 +13,26 @@ namespace RulesEngine
     /// </summary>
     public partial class App : Application
     {
+        Bootstrapper _bootstrapper;
+
+        public App()
+        { }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            _bootstrapper = this.Resources["Locator"] as Bootstrapper;
+
+            MainWindow = new MainWindow();
+            MainWindow.Show();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _bootstrapper.Dispose();
+
+            base.OnExit(e);
+        }
     }
 }

@@ -1,9 +1,15 @@
 ﻿<Application x:Class="RulesEngine.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:RulesEngine.ViewModels"
-             StartupUri="MainWindow.xaml">
+             xmlns:vm="clr-namespace:RulesEngine"
+             xmlns:vm2="clr-namespace:RulesEngine.ViewModels">
     <Application.Resources>
-        <vm:ViewModelLocator x:Key="Locator" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <vm:Bootstrapper x:Key="Locator" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
