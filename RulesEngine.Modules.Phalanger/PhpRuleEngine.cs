@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace RulesEngine.Models
 
         public PhpRuleEngine()
         {
-            System.Diagnostics.Debug.WriteLine("PHP Rule Engine loaded...");
+            Trace.WriteLine("PHP Rule Engine loaded...");
 
             _context = ScriptContext.CurrentContext;
 
@@ -29,19 +30,24 @@ namespace RulesEngine.Models
 
             CustomRuleCode = @"# PHP Code
 
-if (strlen($text) == 0)
-    return false;
-return true;";
+function validate($text) {
+    if (strlen($text) == 0)
+        return false;
+    return true;
+}
+
+return validate($text);";
         }
 
         public bool Validate(string text)
         {
+            var scope = _context.Fork();
             var localVars = new Dictionary<string, object> { { "text", text } };
             return System.Convert.ToBoolean(
                 DynamicCode.Eval(
                     CustomRuleCode,
                     false,
-                    _context,
+                    scope,
                     localVars,
                     null,
                     null,
