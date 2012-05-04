@@ -107,11 +107,8 @@
     <Compile Include="Converters\BooleanToSymbolConverter.cs" />
     <Compile Include="Converters\NegateBooleanConverter.cs" />
     <Compile Include="Models\DefaultRuleEngine.cs" />
-    <Compile Include="Models\IRuleEngine.cs" />
-    <Compile Include="Models\IRuleEngineMetadata.cs" />
     <Compile Include="Models\PythonRuleEngine.cs" />
     <Compile Include="Models\RubyRuleEngine.cs" />
-    <Compile Include="Models\RuleEngineAttribute.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\RuleEngineViewModel.cs" />
@@ -156,6 +153,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RulesEngine.Contracts\RulesEngine.Contracts.csproj">
+      <Project>{832cca42-7473-49e0-85a0-48c605d6c08d}</Project>
+      <Name>RulesEngine.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Modules\placeholder.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

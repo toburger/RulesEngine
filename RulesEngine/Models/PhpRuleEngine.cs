@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PHP.Core;
+using RulesEngine.Contracts;
 using MEFExport = System.ComponentModel.Composition.ExportAttribute;
 
 namespace RulesEngine.Models

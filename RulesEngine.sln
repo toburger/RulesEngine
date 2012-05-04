@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine", "RulesEngine\RulesEngine.csproj", "{A9FF965F-17FD-457C-B424-28D9816BB4A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B} = {3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1ED79F49-92CF-4313-AFCE-2E0AF697D81C}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,12 +12,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1ED79F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{001E6D26-5095-4F87-AFBD-E639D5528C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Modules.IronJS", "RulesEngine.Modules.IronJS\RulesEngine.Modules.IronJS.csproj", "{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Contracts", "RulesEngine.Contracts\RulesEngine.Contracts.csproj", "{832CCA42-7473-49E0-85A0-48C605D6C08D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -22,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B} = {001E6D26-5095-4F87-AFBD-E639D5528C0B}
 	EndGlobalSection
 EndGlobal

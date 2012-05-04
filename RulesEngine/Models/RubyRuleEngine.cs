@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IronRuby;
 using Microsoft.Scripting.Hosting;
+using RulesEngine.Contracts;
 
 namespace RulesEngine.Models
 {

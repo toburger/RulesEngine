@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+using RulesEngine.Contracts;
 
 namespace RulesEngine.Models
 {
     [Export(typeof(IRuleEngine))]
     [RuleEngine("Python Rule Engine")]
-    public class PythonRuleEngine:IRuleEngine
+    public class PythonRuleEngine : IRuleEngine
     {
         private readonly ScriptEngine _engine;
 
