@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,11 @@ namespace RulesEngine.Modules.IronRuby
     [RuleEngine("Ruby Rule Engine")]
     public class RubyRuleEngine : IRuleEngine
     {
-        private ScriptEngine _engine;
+        private readonly ScriptEngine _engine;
 
         public RubyRuleEngine()
         {
-            System.Diagnostics.Debug.WriteLine("Ruby Rule Engine loaded...");
+            Trace.WriteLine("Ruby Rule Engine loaded...");
 
             _engine = Ruby.CreateEngine();
 
