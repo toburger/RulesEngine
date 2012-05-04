@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,18 @@ namespace RulesEngine.Modules.IronJS
 
         public JavaScriptRuleEngine()
         {
-            System.Diagnostics.Debug.WriteLine("JavaScript Rule Engine loaded...");
+            Trace.WriteLine("JavaScript Rule Engine loaded...");
 
             _context = new global::IronJS.Hosting.CSharp.Context();
 
-            CustomRuleCode = @"if (!text)
-    false;
-else
-    true;";
+            CustomRuleCode = @"function validate(text) {
+    if (!text)
+        return false;
+    else
+        return true;
+}
+
+validate(text);";
         }
 
         public bool Validate(string text)
