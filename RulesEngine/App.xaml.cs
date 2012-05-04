@@ -13,7 +13,7 @@ namespace RulesEngine
     /// </summary>
     public partial class App : Application
     {
-        Bootstrapper _bootstrapper;
+        private Bootstrapper _bootstrapper;
 
         public App()
         { }

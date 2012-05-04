@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using RulesEngine.ViewModels;
@@ -18,7 +19,7 @@ namespace RulesEngine
         public Bootstrapper()
         {
             var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(App).Assembly));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
             if (!IsInDesignMode)
                 catalog.Catalogs.Add(new DirectoryCatalog("Modules", "RulesEngine.Modules.*.dll"));
             _container = new CompositionContainer(catalog);
