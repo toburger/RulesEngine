@@ -4,7 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 
-namespace RulesEngine.Models
+namespace RulesEngine.Contracts
 {
     [MetadataAttribute]
     public class RuleEngineAttribute : Attribute
