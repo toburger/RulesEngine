@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace RulesEngine.Modules.IronPython
 
         public PythonRuleEngine()
         {
-            System.Diagnostics.Debug.WriteLine("Python Rule Engine loaded...");
+            Trace.WriteLine("Python Rule Engine loaded...");
 
             _engine = Python.CreateEngine();
 
