@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine", "RulesEngine\RulesEngine.csproj", "{A9FF965F-17FD-457C-B424-28D9816BB4A6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B} = {3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E} = {83FEB0CD-B533-4497-BCDD-968DAD80222E}
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B} = {EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE} = {F9223D68-F833-45C3-8813-EB3E3B8566EE}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1ED79F49-92CF-4313-AFCE-2E0AF697D81C}"
@@ -17,6 +20,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Modules.IronJS", "RulesEngine.Modules.IronJS\RulesEngine.Modules.IronJS.csproj", "{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Contracts", "RulesEngine.Contracts\RulesEngine.Contracts.csproj", "{832CCA42-7473-49E0-85A0-48C605D6C08D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Modules.IronRuby", "RulesEngine.Modules.IronRuby\RulesEngine.Modules.IronRuby.csproj", "{F9223D68-F833-45C3-8813-EB3E3B8566EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Modules.IronPython", "RulesEngine.Modules.IronPython\RulesEngine.Modules.IronPython.csproj", "{83FEB0CD-B533-4497-BCDD-968DAD80222E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine.Modules.Phalanger", "RulesEngine.Modules.Phalanger\RulesEngine.Modules.Phalanger.csproj", "{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,15 +41,30 @@ Global
 		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{832CCA42-7473-49E0-85A0-48C605D6C08D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9FF965F-17FD-457C-B424-28D9816BB4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3E53F1E8-7292-486B-9ECB-BEE92C8B2E8B} = {001E6D26-5095-4F87-AFBD-E639D5528C0B}
+		{83FEB0CD-B533-4497-BCDD-968DAD80222E} = {001E6D26-5095-4F87-AFBD-E639D5528C0B}
+		{EE1C3AAC-BD8A-4789-B01B-46E0CF93B00B} = {001E6D26-5095-4F87-AFBD-E639D5528C0B}
+		{F9223D68-F833-45C3-8813-EB3E3B8566EE} = {001E6D26-5095-4F87-AFBD-E639D5528C0B}
 	EndGlobalSection
 EndGlobal

@@ -5,7 +5,6 @@ using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RulesEngine.Models;
 
 namespace RulesEngine.ViewModels
 {
@@ -17,7 +16,7 @@ namespace RulesEngine.ViewModels
         {
             var catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(App).Assembly));
-            catalog.Catalogs.Add(new DirectoryCatalog("Modules", "*.Modules.*.dll"));
+            catalog.Catalogs.Add(new DirectoryCatalog("Modules", "RulesEngine.Modules.*.dll"));
             _container = new CompositionContainer(catalog);
             _container.ComposeParts(this);
         }

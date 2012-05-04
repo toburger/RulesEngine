@@ -8,13 +8,13 @@ using IronRuby;
 using Microsoft.Scripting.Hosting;
 using RulesEngine.Contracts;
 
-namespace RulesEngine.Models
+namespace RulesEngine.Modules.IronRuby
 {
     [Export(typeof(IRuleEngine))]
     [RuleEngine("Ruby Rule Engine")]
     public class RubyRuleEngine : IRuleEngine
     {
-        private readonly ScriptEngine _engine;
+        private ScriptEngine _engine;
 
         public RubyRuleEngine()
         {

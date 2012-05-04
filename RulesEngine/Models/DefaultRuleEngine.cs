@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RulesEngine.Contracts;
 
-namespace RulesEngine.Models
+namespace RulesEngine.Modules.Phalanger
 {
     [Export(typeof(IRuleEngine))]
     [RuleEngine("Default Rule Engine", IsDefault = true, NoCustomRuleCode = true)]

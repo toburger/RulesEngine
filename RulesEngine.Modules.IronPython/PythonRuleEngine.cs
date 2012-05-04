@@ -8,7 +8,7 @@ using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using RulesEngine.Contracts;
 
-namespace RulesEngine.Models
+namespace RulesEngine.Modules.IronPython
 {
     [Export(typeof(IRuleEngine))]
     [RuleEngine("Python Rule Engine")]

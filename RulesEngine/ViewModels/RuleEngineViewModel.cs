@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using RulesEngine.Contracts;
-using RulesEngine.Models;
 
 namespace RulesEngine.ViewModels
 {
