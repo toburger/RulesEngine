@@ -21,13 +21,16 @@ namespace RulesEngine.Modules.IronJS
 
             _context = new global::IronJS.Hosting.CSharp.Context();
 
-            CustomRuleCode = @"function validate(text) {
+            CustomRuleCode = @"// JavaScript Code
+
+function validate(text) {
     if (!text)
         return false;
     else
         return true;
 }
 
+// implicit return
 validate(text);";
         }
 

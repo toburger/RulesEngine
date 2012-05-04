@@ -28,7 +28,7 @@ namespace RulesEngine.Models
             assemblyLoader.Load(typeof(Uri).Assembly, null);                    // System.dll
             assemblyLoader.Load(typeof(PHP.Library.PhpStrings).Assembly, null); // PhpNetClassLibrary.dll
 
-            CustomRuleCode = @"# PHP Code
+            CustomRuleCode = @"// PHP Code
 
 function validate($text) {
     if (strlen($text) == 0)
@@ -36,6 +36,7 @@ function validate($text) {
     return true;
 }
 
+// explicit return
 return validate($text);";
         }
 

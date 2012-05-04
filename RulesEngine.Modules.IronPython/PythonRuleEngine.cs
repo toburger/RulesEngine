@@ -31,6 +31,7 @@ def validate(text):
   else:
     return False
 
+# implicit return
 validate(Text)";
         }
 
