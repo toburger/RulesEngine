@@ -83,7 +83,6 @@
   <PropertyGroup>
     <PostBuildEvent>REM copy /Y "$(TargetDir)Microsoft.Dynamic*.dll" "..\..\..\RulesEngine\bin\$(ConfigurationName)\Modules\"
 REM copy /Y "$(TargetDir)Microsoft.Scripting*.dll" "..\..\..\RulesEngine\bin\$(ConfigurationName)\Modules\"
-
 copy /Y "$(TargetDir)*IronRuby*.dll" "..\..\..\RulesEngine\bin\$(ConfigurationName)\Modules\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
