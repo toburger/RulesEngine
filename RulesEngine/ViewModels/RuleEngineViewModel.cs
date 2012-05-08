@@ -19,6 +19,7 @@ namespace RulesEngine.ViewModels
         private string _textToValidate;
         private bool? _isValid;
         private string _validationErrors;
+        private bool _canValidate = true;
 
         [ImportingConstructor]
         public RuleEngineViewModel([ImportMany]IEnumerable<Lazy<IRuleEngine, IRuleEngineMetadata>> ruleEngines)
@@ -66,6 +67,8 @@ namespace RulesEngine.ViewModels
                 {
                     _selectedRuleEngine = null;
 
+                    CanValidate = false;
+
                     ValidationErrors = string.Format(
                         "Error initializing: {0}\n{2}\n\n{1}",
                         value.Metadata.RuleName,
@@ -95,6 +98,18 @@ namespace RulesEngine.ViewModels
             {
                 _isValid = value;
                 RaisePropertyChanged("IsValid");
+            }
+        }
+
+        public bool CanValidate
+        {
+            get { return _canValidate; }
+            set
+            {
+                _canValidate = value;
+                RaisePropertyChanged("CanValidate");
+
+                ValidateCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -132,25 +147,50 @@ namespace RulesEngine.ViewModels
             private set;
         }
 
-        private void ValidateAction()
+#if WITH_ASYNC
+        private async void ValidateAction()
         {
             try
             {
-                IsValid = _selectedRuleEngine.Validate(TextToValidate);
+                CanValidate = false;
+
+                IsValid = await TaskEx.Run<bool>(
+                    () => _selectedRuleEngine.Validate(TextToValidate));
                 ValidationErrors = null;
+
+                CanValidate = true;
             }
             catch (Exception ex)
             {
                 IsValid = null;
-                // TODO: loosely couple
-                //MessageBox.Show(ex.Message);
+                CanValidate = false;
                 ValidationErrors = ex.Message;
             }
         }
+#else
+        private void ValidateAction()
+        {
+            try
+            {
+                CanValidate = false;
+
+                IsValid = _selectedRuleEngine.Validate(TextToValidate);
+                ValidationErrors = null;
+
+                CanValidate = true;
+            }
+            catch (Exception ex)
+            {
+                IsValid = null;
+                CanValidate = false;
+                ValidationErrors = ex.Message;
+            }
+        }
+#endif
 
         private bool CanValidateAction()
         {
-            return ValidationErrors == null;
+            return CanValidate;
         }
 
         private void RaisePropertyChanged(string propertyName)
@@ -163,6 +203,7 @@ namespace RulesEngine.ViewModels
         private void ResetForm()
         {
             IsValid = null;
+            CanValidate = true;
             ValidationErrors = null;
         }
     }

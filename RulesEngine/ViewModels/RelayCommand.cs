@@ -36,5 +36,10 @@ namespace RulesEngine.ViewModels
             if (CanExecute(null))
                 _execute();
         }
+
+        internal void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
     }
 }
