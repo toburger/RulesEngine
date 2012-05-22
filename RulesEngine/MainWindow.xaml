@@ -48,7 +48,8 @@
                 </Grid.RowDefinitions>
                 <ComboBox ItemsSource="{Binding RuleEngines}"
                           SelectedItem="{Binding SelectedRuleEngine}"
-                          DisplayMemberPath="Metadata.RuleName" />
+                          DisplayMemberPath="Metadata.RuleName"
+                          IsEnabled="{Binding CanValidate}" />
                 <TextBox Grid.Row="1"
                          Text="{Binding CustomRuleCode, UpdateSourceTrigger=PropertyChanged}"
                          AcceptsReturn="True"
